@@ -9,7 +9,7 @@ public class Kap6Opgave7 {
         int years = input.nextInt();
         futureInvestmentValue(investmentAmount, monthlyInterestRate, years);
     }
-    public static double futureInvestmentValue(double investmentAmount, double monthlyInterestRate, int years){
+    public static void futureInvestmentValue(double investmentAmount, double monthlyInterestRate, int years){
         System.out.println("Years         Future Value");
         for (int i = 1; i <= 12 * years; i++){
             investmentAmount += (investmentAmount * monthlyInterestRate);
@@ -20,6 +20,5 @@ public class Kap6Opgave7 {
                 System.out.println();
             }
         }
-        return investmentAmount;
     }
 }
