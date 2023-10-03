@@ -9,7 +9,8 @@ public class Kap7Opgave4 {
         System.out.println(snit);
         System.out.println(antalOverSnit(scoresArray, antal, snit) + " tal er over gennemsnittet");
         System.out.println(antalUnderSnit(scoresArray, antal, snit) + " tal er under gennemsnittet");
-
+        int min = mindst(scoresArray, antal);
+        System.out.println("Det mindste tal er " + min);
         udskriv(scoresArray, antal);
     }
     public static int inputScores (int[] scoresArray){
@@ -45,7 +46,6 @@ public class Kap7Opgave4 {
 
     return overSnit;
     }
-
     public static int antalUnderSnit(int[] scoresArray, int antal, double snit){
         int underSnit = 0;
         for (int i = 0; i < antal; i++){
@@ -54,7 +54,13 @@ public class Kap7Opgave4 {
 
         return underSnit;
     }
-
-
-
+    public static int mindst(int[] scoresArray, int antal){
+        int min = scoresArray[0];
+        for (int i = 0; i<antal; i++){
+            if (min > scoresArray[i]){
+                min = scoresArray[i];
+            }
+        }
+        return min;
+    }
 }
