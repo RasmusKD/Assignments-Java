@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Scanner;
 //a)	Opret en textfil “MinFil.txt”, hvor der skrives 10 integers i.
@@ -10,16 +11,20 @@ import java.util.Scanner;
 
 public class OpgaveArkDatafiler2 {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
         int[] array = new int[10];
         int antal = 10;
         IndlaesFraFil(array);
         udskriv(array, antal);
         System.out.println(gennemsnit(array, antal));
+        for (int i = 0; i < 10; i++) {
+            array[i] += 10;
+        }
+        SkrivTilFil(array, antal);
+
     }
     public static void udskriv(int[] a, int antal){
         for (int i = 0; i < antal; i++){
-            System.out.println(a[i]);
+            System.out.print(a[i] + " ");
         }
     }
     public static double gennemsnit(int[] a, int antal){
@@ -32,12 +37,24 @@ public class OpgaveArkDatafiler2 {
     }
     static void IndlaesFraFil(int[] tabel) {
         try {
-            File myObj = new File("MinFil.txt");
+            File myObj = new File("C:\\Users\\Rasmus\\Documents\\GitHub\\Skole\\src\\MinFil.txt");
+
             Scanner in = new Scanner(myObj);
 
             for (int i = 0; i < 10; i++)
                 tabel[i] =in.nextInt();
             in.close();
+        } catch (FileNotFoundException exception) {
+            exception.printStackTrace();
+        }
+    }
+    static void SkrivTilFil(int [] tabel,int antal)
+    {
+        try {
+            PrintWriter ud = new PrintWriter("C:\\Users\\Rasmus\\Documents\\GitHub\\Skole\\src\\MinFilOutput.txt");
+            for (int i = 0; i < antal; i++)
+                ud.format("%d ", tabel[i]);
+            ud.close();
         } catch (FileNotFoundException exception) {
             exception.printStackTrace();
         }

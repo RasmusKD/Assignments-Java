@@ -15,7 +15,7 @@ public class OpgaveArkDatafiler1 {
     }
     public static void udskriv(int[] a, int antal){
         for (int i = 0; i < antal; i++){
-            System.out.println(a[i]);
+            System.out.print(a[i] + " ");
         }
     }
     public static double gennemsnit(int[] a, int antal){
@@ -24,6 +24,6 @@ public class OpgaveArkDatafiler1 {
             sum+=a[i];
         }
 
-        return (double) sum /antal;
+        return (double) sum/antal;
     }
 }
