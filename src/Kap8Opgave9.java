@@ -17,6 +17,11 @@ public class Kap8Opgave9 {
             System.out.println("Spiller " + spillerNr + " angiv række og kolonne");
             r = input.nextInt();
             k = input.nextInt();
+            while (( r > 2 || k > 2 || r < 0 || k < 0) || board[r][k] != ' '){
+                System.out.println("Ugyldigt træk, spiller " + spillerNr + " angiv række og kolonne");
+                r = input.nextInt();
+                k = input.nextInt();
+            }
             if (spillerNr==1) {
                 board[r][k] = 'x';
                 spillerNr = 2;
@@ -36,34 +41,36 @@ public class Kap8Opgave9 {
             }
         }
     }
-    public static void udskriv (char a[][]){
+    public static void udskriv (char[][] a){
+        for (int i = 0; i < 3; i++){
+            System.out.println("-------------");
+            System.out.printf("| %c | %c | %c | \n", a[i][0], a[i][1], a[i][2]);
+        }
         System.out.println("-------------");
-        System.out.printf("| %c | %c | %c | \n", a[0][0], a[0][1], a[0][2]);
-        System.out.println("-------------");
-        System.out.printf("| %c | %c | %c | \n", a[1][0], a[1][1], a[1][2]);
-        System.out.println("-------------");
-        System.out.printf("| %c | %c | %c | \n", a[2][0], a[2][1], a[2][2]);
-        System.out.println("-------------");
-
     }
     public static int tjekVinder (char[][] a){
-        int antalX=0;
-        int antalO=0;
-        for (int i = 0; i < 3; i++){
-            antalX=0;
-            antalX=0;
-            for (int j =0; j<3; j++){
-                if (a[i][j]=='X')
-                    antalX++;
-                if (a[i][j]=='O')
-                    antalO++;
+        int antalX;
+        int antalO;
+        for (int r = 0; r < 3; r++) {
+            antalX = 0;
+            antalO = 0;
+            for (int k = 0; k < 3; k++) {
+                if (a[r][k] == 'x') antalX++;
+                if (a[r][k] == 'O') antalO++;
             }
-            if(antalX==3){
-                return 1;
+            if (antalX == 3) return 1;
+            if (antalO == 3) return 2;
+        }
+
+        for (int k = 0; k < 3; k++) {
+            antalX = 0;
+            antalO = 0;
+            for (int r = 0; r < 3; r++) {
+                if (a[r][k] == 'x') antalX++;
+                if (a[r][k] == 'O') antalO++;
             }
-            if(antalX==3){
-                return 2;
-            }
+            if (antalX == 3) return 1;
+            if (antalO == 3) return 2;
         }
         return 0;
     }

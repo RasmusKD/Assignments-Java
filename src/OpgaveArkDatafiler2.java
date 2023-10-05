@@ -10,15 +10,13 @@ import java.util.Scanner;
 //e)	Læg 10 til alle tallene i arrayet, og udskriv nu arrayets indhold (med Scanner) til en textfil “MinFil1.txt”.
 
 public class OpgaveArkDatafiler2 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         int[] array = new int[10];
         int antal = 10;
         IndlaesFraFil(array);
         udskriv(array, antal);
         System.out.println(gennemsnit(array, antal));
-        for (int i = 0; i < 10; i++) {
-            array[i] += 10;
-        }
+        laegTalTil(array, antal, 5);
         SkrivTilFil(array, antal);
 
     }
@@ -35,28 +33,26 @@ public class OpgaveArkDatafiler2 {
 
         return (double) sum /antal;
     }
-    static void IndlaesFraFil(int[] tabel) {
-        try {
-            File myObj = new File("MinFil.txt");
+    static void IndlaesFraFil(int[] tabel) throws FileNotFoundException {
+        File myObj = new File("MinFil.txt");
 
-            Scanner in = new Scanner(myObj);
+        Scanner in = new Scanner(myObj);
 
-            for (int i = 0; i < 10; i++)
-                tabel[i] =in.nextInt();
-            in.close();
-        } catch (FileNotFoundException exception) {
-            exception.printStackTrace();
+        for (int i = 0; i < 10; i++) {
+            tabel[i] = in.nextInt();
         }
+        in.close();
     }
-    static void SkrivTilFil(int [] tabel,int antal)
-    {
-        try {
-            PrintWriter ud = new PrintWriter("MinFilOutput.txt");
-            for (int i = 0; i < antal; i++)
-                ud.format("%d ", tabel[i]);
-            ud.close();
-        } catch (FileNotFoundException exception) {
-            exception.printStackTrace();
+
+    static void SkrivTilFil(int [] tabel,int antal) throws FileNotFoundException {
+        PrintWriter ud = new PrintWriter("MinFilOutput.txt");
+        for (int i = 0; i < antal; i++)
+            ud.format("%d ", tabel[i]);
+        ud.close();
+    }
+    public static void laegTalTil(int[] a, int antal, int tal){
+        for (int i = 0; i < antal; i++) {
+            a[i] += tal;
         }
     }
 }
