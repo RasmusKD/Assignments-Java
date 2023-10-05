@@ -37,7 +37,7 @@ public class OpgaveArkDatafiler2 {
     }
     static void IndlaesFraFil(int[] tabel) {
         try {
-            File myObj = new File("C:\\Users\\Rasmus\\Documents\\GitHub\\Skole\\src\\MinFil.txt");
+            File myObj = new File("MinFil.txt");
 
             Scanner in = new Scanner(myObj);
 
@@ -51,7 +51,7 @@ public class OpgaveArkDatafiler2 {
     static void SkrivTilFil(int [] tabel,int antal)
     {
         try {
-            PrintWriter ud = new PrintWriter("C:\\Users\\Rasmus\\Documents\\GitHub\\Skole\\src\\MinFilOutput.txt");
+            PrintWriter ud = new PrintWriter("MinFilOutput.txt");
             for (int i = 0; i < antal; i++)
                 ud.format("%d ", tabel[i]);
             ud.close();
